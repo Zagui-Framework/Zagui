@@ -3,6 +3,7 @@ Feature: Login SauceDemo
   I want to log in to the application with different valid and invalid credentials
   To be able to access my inventory and in turn test the invalid credentials messages
 
+  @Test01
   Scenario Outline: Login with valid credentials
     Given I am on the login page
     When I enter <username> as the username
