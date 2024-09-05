@@ -69,6 +69,9 @@ To execute tests from your IDE, run the test suite `TestRunner.java` as a JUnit 
 ### 2. Using Gradle (Command Line)
 To run the tests using Gradle, open a terminal or command prompt, navigate to the root directory of your project, and execute the following command: `gradle test`
 
+### 3. Using Tags (Command Line)
+To run the tests using Tags, open a terminal or command prompt, navigate to the root directory of your project, and execute the following command: `gradle cucumber -P tags="@Name_of_the_tag"`
+
 ## Contributing
 
 If you wish to contribute to this project, follow these steps:
