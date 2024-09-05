@@ -12,7 +12,8 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "steps",
-        plugin = {"pretty", "html:src/test/resources/reports/cucumber-reports"}
+        plugin = {"pretty", "html:src/test/resources/reports/cucumber-reports"},
+        tags = "@Test01"
 
 )
 public class TestRunner implements TestHooks {
