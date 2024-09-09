@@ -27,34 +27,7 @@ dependencies {
 test {
     // Use JUnit 5 for running tests
     useJUnit()
+    //To run the test using tags, use the command gradle test -D cucumber.filter.tags="@name_of_tag"
     systemProperty 'cucumber.filter.tags', System.getProperty('cucumber.filter.tags', '')
 }
-//Task to run scenarios using tags
-//Command to run scenario using tag gradle cucumber -P tags="@Name_of_tag"
-tasks.register('cucumber', JavaExec) {
-    dependsOn assemble, testClasses
-    group = 'verification'
-    description = 'Runs Cucumber BDD tests'
-    mainClass = 'io.cucumber.core.cli.Main'
-    classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-    args = [
-            '--plugin', 'pretty',
-            '--glue', 'steps',
-            'src/test/resources/features'
-    ]
-    //Conditional which helps us execute the tests that have a specific tag
-    if (project.hasProperty('tags')) {
-        args += ['--tags', project.property('tags')]
-    } else {
-        //To run all tos tests, we will use the tag @non_existent_tag
-        //Command to run all scenario gradle cucumber -P tags="not @non_existent_tag"
-        args += ['--tags', '@non_existent_tag']
-    }
-    systemProperties System.properties
-}
 
-configurations {
-    cucumberRuntime {
-        extendsFrom testImplementation
-    }
-}
